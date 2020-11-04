@@ -38,26 +38,21 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Profiles" />
-    <Folder Include="WebRole1Content\" />
-    <Folder Include="WebRole2Content\" />
-    <Folder Include="WebScraperContent\" />
+    <Folder Include="WhatToWatch.WebScraperContent" />
   </ItemGroup>
   <ItemGroup>
     <PublishProfile Include="Profiles\whattowatchapi2020Production.azurePubxml" />
   </ItemGroup>
   <ItemGroup>
-    <DiagnosticsConfiguration Include="WebRole1Content\diagnostics.wadcfgx" />
-    <DiagnosticsConfiguration Include="WebRole2Content\diagnostics.wadcfgx" />
-    <DiagnosticsConfiguration Include="WebScraperContent\diagnostics.wadcfgx" />
+    <DiagnosticsConfiguration Include="WhatToWatch.WebScraperContent\diagnostics.wadcfgx" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\WebScraper\WebScraper.csproj">
-      <Name>WebScraper</Name>
+    <ProjectReference Include="..\WebScraper\WhatToWatch.WebScraper.csproj">
+      <Name>WhatToWatch.WebScraper</Name>
       <Project>{b467b1c3-3619-424a-9894-aa082790f17b}</Project>
       <Private>True</Private>
       <RoleType>Web</RoleType>
-      <RoleName>WebScraper</RoleName>
-      <UpdateDiagnosticsConnectionStringOnPublish>True</UpdateDiagnosticsConnectionStringOnPublish>
+      <RoleName>WhatToWatch.WebScraper</RoleName>
     </ProjectReference>
   </ItemGroup>
   <!-- Import the target files for this project template -->

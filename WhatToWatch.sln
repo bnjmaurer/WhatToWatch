@@ -7,10 +7,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WhatToWatch.Api", "WhatToWa
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WhatToWatch.Tests", "WhatToWatch.Tests\WhatToWatch.Tests.csproj", "{031B074D-ABEA-41D5-A2BE-1F6054C4C5B3}"
 EndProject
-Project("{CC5FD16D-436D-48AD-A40C-5A424C6E3E79}") = "WhatToWatch.CloudService", "WhatToWatch.CloudService\WhatToWatch.CloudService.ccproj", "{8A225D1A-8C04-4D9F-AE32-FF825CA2F305}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebScraper", "WebScraper\WebScraper.csproj", "{B467B1C3-3619-424A-9894-AA082790F17B}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,14 +21,6 @@ Global
 		{031B074D-ABEA-41D5-A2BE-1F6054C4C5B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{031B074D-ABEA-41D5-A2BE-1F6054C4C5B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{031B074D-ABEA-41D5-A2BE-1F6054C4C5B3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8A225D1A-8C04-4D9F-AE32-FF825CA2F305}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8A225D1A-8C04-4D9F-AE32-FF825CA2F305}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8A225D1A-8C04-4D9F-AE32-FF825CA2F305}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8A225D1A-8C04-4D9F-AE32-FF825CA2F305}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B467B1C3-3619-424A-9894-AA082790F17B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B467B1C3-3619-424A-9894-AA082790F17B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B467B1C3-3619-424A-9894-AA082790F17B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B467B1C3-3619-424A-9894-AA082790F17B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

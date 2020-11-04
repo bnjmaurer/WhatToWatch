@@ -3,16 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WebScraper.Services;
 
 namespace WebScraper.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        public string Index()
         {
-            ViewBag.Title = "Home Page";
+            var repp = new RogerEbertRepository();
 
-            return View();
+            return repp.GetMovieRating();
         }
     }
 }
