@@ -20,10 +20,9 @@ namespace WhatToWatch.Api.Controllers
             this.rogerEbertRepository = rogerEbertRepository;
         }
 
-        [HttpGet]
-        public ActionResult<MovieInfo> Get()
-        {
-            string movieName = "tenet";
+        [HttpGet("{movieName}")]
+        public ActionResult<MovieInfo> Get(string movieName)
+        {            
             var movieInfo = new MovieInfo();
             movieInfo.RogerEbert = rogerEbertRepository.GetMovieRating(movieName);
             if (movieInfo.RogerEbert is null)

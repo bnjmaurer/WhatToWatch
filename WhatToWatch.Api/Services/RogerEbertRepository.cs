@@ -1,6 +1,7 @@
 ﻿using OpenQA.Selenium.Chrome;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using WhatToWatch.Api.ExternalModels;
@@ -16,9 +17,11 @@ namespace WhatToWatch.Api.Services
                 throw new ArgumentNullException(nameof(movieName));
 
             var rogertEbertMovieRating = new RogerEbertMovieRating();
-
-            using (var browser = new ChromeDriver(WebScraper.ChromeOptions))
+             
+            //using (var browser = new ChromeDriver(WebScraper.chromeDriverService, WebScraper.chromeOptions, TimeSpan.FromSeconds(30)))
+            using (var browser = new ChromeDriver(WebScraper.chromeDriverService, WebScraper.chromeOptions))
             {
+                //browser.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(40);
                 var movieNameQuery = movieName.Trim().Replace(' ', '+');
                 var searchPageHtmlDocumentNode = WebScraper.GetHtmlDocumentNodeFromUrl(browser, $"https://www.rogerebert.com/search?utf8=%E2%9C%93&q={movieNameQuery}");
 

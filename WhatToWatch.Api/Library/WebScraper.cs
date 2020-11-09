@@ -9,13 +9,26 @@ namespace WhatToWatch.Api.Library
 {
     public static class WebScraper
     {
-        public static ChromeOptions ChromeOptions
+        public static ChromeOptions chromeOptions
         {
             get
             {
                 var chromeOptions = new ChromeOptions();
-                chromeOptions.AddArguments("headless");                
+                chromeOptions.AddArguments("headless");
+                chromeOptions.AddArguments("no-sandbox");
+                chromeOptions.AddArguments("disable-setuid-sandbox");
                 return chromeOptions;
+            }
+        }
+
+        public static ChromeDriverService chromeDriverService
+        {
+            get
+            {
+                string driverPath = "/opt/selenium";
+                string driverExecutableFileName = "chromedriver";
+                var service = ChromeDriverService.CreateDefaultService(driverPath, driverExecutableFileName);
+                return service;
             }
         }
 
