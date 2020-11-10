@@ -19,21 +19,22 @@ namespace WhatToWatch.Api.Services
             var rogertEbertMovieRating = new RogerEbertMovieRating();
              
             //using (var browser = new ChromeDriver(WebScraper.chromeDriverService, WebScraper.chromeOptions, TimeSpan.FromSeconds(30)))
-            using (var browser = new ChromeDriver(WebScraper.chromeDriverService, WebScraper.chromeOptions))
+            using (var browser = new ChromeDriver(SeleniumChromeDriverWebScraper.chromeDriverService, SeleniumChromeDriverWebScraper.chromeOptions))
             {
-                //browser.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(40);
-                var movieNameQuery = movieName.Trim().Replace(' ', '+');
-                var searchPageHtmlDocumentNode = WebScraper.GetHtmlDocumentNodeFromUrl(browser, $"https://www.rogerebert.com/search?utf8=%E2%9C%93&q={movieNameQuery}");
+                //browser.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(40);                
+                string searchPageLink = "https://www.rogerebert.com/search?utf8=%E2%9C%93&q=" + movieName.Trim().Replace(' ', '+');
+                var searchPageHtml = SeleniumChromeDriverWebScraper.GetHtmlDocumentNodeFromUrl(browser, searchPageLink);
 
-                rogertEbertMovieRating.ReviewTitle = searchPageHtmlDocumentNode.SelectSingleNode("//*[@class='gs-title'][1]")?.FirstChild.InnerText;
-                rogertEbertMovieRating.ReviewLink = searchPageHtmlDocumentNode.SelectSingleNode("//*[@class='gs-title'][1]")?.FirstChild.Attributes["href"].Value;
+                rogertEbertMovieRating.ReviewLink = searchPageHtml.SelectSingleNode("//*[@class='gs-title'][1]")?.FirstChild.Attributes["href"].Value;
 
                 if (String.IsNullOrWhiteSpace(rogertEbertMovieRating.ReviewLink))
                     return null;
 
-                var reviewPageHtmlDocumentNode = WebScraper.GetHtmlDocumentNodeFromUrl(browser, rogertEbertMovieRating.ReviewLink);
+                rogertEbertMovieRating.ReviewTitle = searchPageHtml.SelectSingleNode("//*[@class='gs-title'][1]")?.FirstChild.InnerText;
 
-                var starRating = reviewPageHtmlDocumentNode.SelectSingleNode("//*[@class='star-rating']").ChildNodes;
+                var reviewPageHtml = SeleniumChromeDriverWebScraper.GetHtmlDocumentNodeFromUrl(browser, rogertEbertMovieRating.ReviewLink);
+
+                var starRating = reviewPageHtml.SelectSingleNode("//*[@class='star-rating']").ChildNodes;
                 if (starRating.First().Attributes["title"].Value == "thumbsdown")
                 {
                     rogertEbertMovieRating.Rating = "thumbsdown :(";

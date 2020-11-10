@@ -17,10 +17,4 @@
     <ProjectReference Include="..\WhatToWatch.Api\WhatToWatch.Api.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Update="chromedriver.exe">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-
 </Project>

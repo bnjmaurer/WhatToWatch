@@ -7,8 +7,9 @@ namespace WhatToWatch.Api.ExternalModels
 {
     public class KidsInMindMovieRating
     {
-        public string movieName { get; set; }
-        public string movieYear { get; set; }
+        public string MovieName { get; set; }
+        public string MovieYear { get; set; }
+        public string ReviewLink { get; set; }
         public int SexNudity { get; set; }
         public int ViolenceGore { get; set; }
         public int Language { get; set; }
