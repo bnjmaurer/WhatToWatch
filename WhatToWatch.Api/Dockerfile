@@ -46,10 +46,13 @@ unzip \
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 WORKDIR /src
 COPY ["WhatToWatch.Api/WhatToWatch.Api.csproj", "WhatToWatch.Api/"]
+#COPY ["WhatToWatch.Tests/WhatToWatch.Tests.csproj", "WhatToWatch.Tests/"]
 RUN dotnet restore "WhatToWatch.Api/WhatToWatch.Api.csproj"
+#RUN dotnet restore "WhatToWatch.Tests/WhatToWatch.Tests.csproj"
 COPY . .
 WORKDIR "/src/WhatToWatch.Api"
 RUN dotnet build "WhatToWatch.Api.csproj" -c Release -o /app/build
+#RUN dotnet build "/src/WhatToWatch.Tests/WhatToWatch.Tests.csproj" -c Release -o /app/build
 
 FROM build AS publish
 RUN dotnet publish "WhatToWatch.Api.csproj" -c Release -o /app/publish
@@ -57,5 +60,6 @@ RUN dotnet publish "WhatToWatch.Api.csproj" -c Release -o /app/publish
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
+#RUN dotnet test "/src/WhatToWatch.Tests/WhatToWatch.Tests.csproj" -c Release
 ENTRYPOINT ["dotnet", "WhatToWatch.Api.dll"]
 

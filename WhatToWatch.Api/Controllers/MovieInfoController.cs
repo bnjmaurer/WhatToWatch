@@ -14,19 +14,20 @@ namespace WhatToWatch.Api.Controllers
     public class MovieInfoController : ControllerBase
     {
         private readonly IRogerEbertRepository rogerEbertRepository;
+        private readonly IKidsInMindRepository kidsInMindRepository;
 
-        public MovieInfoController(IRogerEbertRepository rogerEbertRepository)
+        public MovieInfoController(IRogerEbertRepository rogerEbertRepository, IKidsInMindRepository kidsInMindRepository)
         {
             this.rogerEbertRepository = rogerEbertRepository;
+            this.kidsInMindRepository = kidsInMindRepository;
         }
 
         [HttpGet("{movieName}")]
         public ActionResult<MovieInfo> Get(string movieName)
         {            
             var movieInfo = new MovieInfo();
-            movieInfo.RogerEbert = rogerEbertRepository.GetMovieRating(movieName);
-            if (movieInfo.RogerEbert is null)
-                return NotFound();
+            //movieInfo.RogerEbert = rogerEbertRepository.GetMovieRating(movieName);
+            movieInfo.KidsInMind = kidsInMindRepository.GetMovieRating(movieName);
             return Ok(movieInfo);           
         }
     }

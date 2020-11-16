@@ -10,5 +10,6 @@ namespace WhatToWatch.Api.Models
     {
         public string MovieName { get; set; }
         public RogerEbertMovieRating RogerEbert { get; set; }
+        public KidsInMindMovieRating KidsInMind { get; set; }
     }
 }

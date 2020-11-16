@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "WhatToWatch.Tests": {
+      "commandName": "Project"
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}

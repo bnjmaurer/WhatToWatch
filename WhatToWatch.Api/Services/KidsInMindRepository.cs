@@ -28,9 +28,22 @@ namespace WhatToWatch.Api.Services
                 return null;
 
             kidsInMindMovieRating.ReviewLink = firstResultHtmlNode.Attributes["href"].Value;
-            
-            var reviewInfo = Regex.Split(firstResultHtmlNode.InnerText, @"[[][]][-]");
-            
+
+            var movieInfo = firstResultHtmlNode.InnerText;
+            kidsInMindMovieRating.MovieName = movieInfo.Split('[')[0];
+            kidsInMindMovieRating.MovieYear = Regex.Match(movieInfo, @"\[\d{4}\]").Value.Substring(0, 5);
+
+            var ratings = Regex.Match(movieInfo, @"\d\.\d\.\d").Value.Split('.');
+            int sexNudity;
+            Int32.TryParse(ratings[0], out sexNudity);
+            kidsInMindMovieRating.SexNudity = sexNudity;
+            int violenceGore;
+            Int32.TryParse(ratings[1], out violenceGore);
+            kidsInMindMovieRating.ViolenceGore = violenceGore;
+            int language;
+            Int32.TryParse(ratings[2], out language);
+            kidsInMindMovieRating.Language = language;
+
             return kidsInMindMovieRating;
         }
     }
