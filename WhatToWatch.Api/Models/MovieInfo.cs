@@ -8,7 +8,11 @@ namespace WhatToWatch.Api.Models
 {
     public class MovieInfo
     {
-        public string MovieName { get; set; }
+        public int MovieDbApiId { get; set; }
+        public string IMDBId { get; set; }
+        public string Name { get; set; }
+        public int Year { get; set; }
+        public int DurationInMinutes { get; set; }
         public RogerEbertMovieRating RogerEbert { get; set; }
         public KidsInMindMovieRating KidsInMind { get; set; }
     }

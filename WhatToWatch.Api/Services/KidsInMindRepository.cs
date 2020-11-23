@@ -30,19 +30,13 @@ namespace WhatToWatch.Api.Services
             kidsInMindMovieRating.ReviewLink = firstResultHtmlNode.Attributes["href"].Value;
 
             var movieInfo = firstResultHtmlNode.InnerText;
-            kidsInMindMovieRating.MovieName = movieInfo.Split('[')[0];
-            kidsInMindMovieRating.MovieYear = Regex.Match(movieInfo, @"\[\d{4}\]").Value.Substring(0, 5);
+            kidsInMindMovieRating.MovieName = movieInfo.Split('[')[0].Trim();
+            kidsInMindMovieRating.MovieYear = Regex.Match(movieInfo, @"\[\d{4}\]").Value.Substring(1, 4);
 
-            var ratings = Regex.Match(movieInfo, @"\d\.\d\.\d").Value.Split('.');
-            int sexNudity;
-            Int32.TryParse(ratings[0], out sexNudity);
-            kidsInMindMovieRating.SexNudity = sexNudity;
-            int violenceGore;
-            Int32.TryParse(ratings[1], out violenceGore);
-            kidsInMindMovieRating.ViolenceGore = violenceGore;
-            int language;
-            Int32.TryParse(ratings[2], out language);
-            kidsInMindMovieRating.Language = language;
+            var ratings = Regex.Match(movieInfo, @"\d{1,2}\.\d{1,2}\.\d{1,2}").Value.Split('.');            
+            kidsInMindMovieRating.SexNudity = ratings[0] + " / 10";            
+            kidsInMindMovieRating.ViolenceGore = ratings[1] + " / 10";            
+            kidsInMindMovieRating.Language = ratings[2] + " / 10";
 
             return kidsInMindMovieRating;
         }
